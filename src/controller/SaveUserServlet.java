@@ -29,10 +29,13 @@ public class SaveUserServlet extends HttpServlet {
         //receive all  input value from jsp
         HttpSession session = request.getSession();
         TUser loginuser = (TUser) session.getAttribute("loginuser");
+        //
+        UserDAO udao = new UserDaoImpl();
 
         String userid = request.getParameter("userid");
         String username = request.getParameter("username");
         String pwd = request.getParameter("pwd");
+        String pwd2 = request.getParameter("pwd2");
         String mail = request.getParameter("mail");
         String mobile = request.getParameter("mobile");
 
@@ -41,18 +44,37 @@ public class SaveUserServlet extends HttpServlet {
         String backUrl = "login.jsp";
         if (username == null) {
             errMgs = "username cannot be empty";
+        } 
+        if(userid==null || userid.equals("")){
+            errMgs = "User account can not empty!";
+        }else if(userid!=null && !userid.equals("")){
+            boolean available = udao.isUseridValid(userid);
+            if(available == false){
+                errMgs = "The user account existence!";
+            }
+        } else if(username==null || username.equals("")){
+            errMgs = "User name can not empty!";
+        }else if(mobile==null || mobile.equals("")){
+            errMgs = "User contact mobile can not empty!";
+        }else if(mail==null || mail.equals("")){
+            errMgs = "User mail can not empty!";
+        }else if(pwd==null || pwd.equals("")){
+            errMgs = "Login password can not empty!";
+        }else if(pwd2==null || pwd2.equals("")){
+            errMgs = "Login password confirm can not empty!";
+        }else if(!pwd.equals(pwd2)) {
+            errMgs = "The passwords entered twice are inconsistent!";
         }
 
         if (errMgs != null && !errMgs.equals("")) {
             RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
-            request.setAttribute("errMsg", errMgs);
+            request.setAttribute("errMgs", errMgs);
             request.setAttribute("backUrl", backUrl);
             rd.forward(request, response);
             return;
         }
 
-        //
-        UserDAO udao = new UserDaoImpl();
+
 
         if (loginuser == null) {//add new user info || loginuser.getUserid().equals("")
 
@@ -66,7 +88,7 @@ public class SaveUserServlet extends HttpServlet {
             if (udao.registerUser(user) <= 0) {
                 System.out.println("failed");
                 RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
-                request.setAttribute("errMsg", "Failed");
+                request.setAttribute("errMgs", "Failed");
                 request.setAttribute("backUrl", backUrl);
                 rd.forward(request, response);
                 response.sendRedirect("login.jsp");
@@ -108,7 +130,7 @@ public class SaveUserServlet extends HttpServlet {
                 return;
             } else {
                 RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
-                request.setAttribute("errMsg", "update Failed");
+                request.setAttribute("errMgs", "update Failed");
                 request.setAttribute("backUrl", "index.jsp");
                 rd.forward(request, response);
                 return;

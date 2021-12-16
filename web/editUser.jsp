@@ -51,7 +51,7 @@
                                aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">
-                        <input name="pwd" type="password" placeholder="password" value="${loginuser.pwd}" required=""
+                        <input name="pwd2" type="password" placeholder="password" value="${loginuser.pwd}" required=""
                                aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">
