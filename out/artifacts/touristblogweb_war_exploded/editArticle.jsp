@@ -53,7 +53,7 @@
                     <div class="form-field" style="display: none">
                         <input name="articleid" type="text" id="userid" placeholder="userid"
                                value="${article.articleid}"
-                            class="full-width">
+                               class="full-width">
                     </div>
 
                     <div class="form-field">

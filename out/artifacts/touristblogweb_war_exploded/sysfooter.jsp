@@ -1,12 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Yvon
-  Date: 2021-12-13
-  Time: 9:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="jspresources.jsp"%>
+<%@include file="jspresources.jsp" %>
 <footer style="background: black">
     <div class="row">
         <div class="col-full">
@@ -50,17 +43,12 @@
             </div>
 
             <div class="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up"
+                                                                           aria-hidden="true"></i></a>
             </div>
         </div>
 
     </div> <!-- end footer-bottom -->
 
-</footer> <!-- end footer -->
-
-
-<%--<div id="preloader">--%>
-<%--    <div id="loader"></div>--%>
-<%--</div>--%>
-
-
+</footer>
+<!-- end footer -->

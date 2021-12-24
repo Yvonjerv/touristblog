@@ -18,7 +18,7 @@ import java.util.List;
 public class FileUploadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        doGet(request, response);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class FileUploadServlet extends HttpServlet {
         response.setContentType("text/html");
 
         Enumeration em = request.getParameterNames();
-        while(em.hasMoreElements()){
-            String s = (String)em.nextElement();
+        while (em.hasMoreElements()) {
+            String s = (String) em.nextElement();
         }
 
         ServletFileUpload upload = new ServletFileUpload(
@@ -40,14 +40,14 @@ public class FileUploadServlet extends HttpServlet {
 
         try {
             List itemList = upload.parseRequest(request);
-            for (Iterator it = itemList.iterator(); it.hasNext();) {
+            for (Iterator it = itemList.iterator(); it.hasNext(); ) {
                 FileItem item = (FileItem) it.next();
                 if (!item.isFormField())// 如果是非表单数据
                 {
-                    if(item.getName().length()<=0)return;
+                    if (item.getName().length() <= 0) return;
 
-                    fileName =item.getName().replace("/", "\\");
-                    if(fileName.lastIndexOf("\\")!=-1){
+                    fileName = item.getName().replace("/", "\\");
+                    if (fileName.lastIndexOf("\\") != -1) {
                         fileName = fileName.substring(fileName.lastIndexOf("\\"));
                     }
 
@@ -72,7 +72,7 @@ public class FileUploadServlet extends HttpServlet {
                     msg = fileName; //success,return upload file name
                 }
             }
-        }  catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             msg = "upload file failed";
         }
@@ -81,12 +81,12 @@ public class FileUploadServlet extends HttpServlet {
         out.write(msg);
     }
 
-    public String getRootPath(String path){
+    public String getRootPath(String path) {
         String rootpath;
         int pos = path.lastIndexOf("\\");
         rootpath = path.substring(0, pos);
         pos = rootpath.lastIndexOf("\\");
-        rootpath = rootpath.substring(0, pos+1);
+        rootpath = rootpath.substring(0, pos + 1);
         return rootpath;
     }
 }

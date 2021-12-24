@@ -102,7 +102,8 @@
     <div class="row blog-content">
         <div class="col-full blog-content__main" style="margin-bottom:50px ">
             <c:if test="${article.userid==loginuser.userid}">
-                <a href="editContent.jsp?articleid=${article.articleid}" class="btn full-width" style="">new content</a>
+                <a href="editContent.jsp?articleid=${article.articleid}" class="btn full-width"> <i
+                        class="fas fa-plus"></i> new content</a>
             </c:if>
             <c:forEach items="${contentList}" var="content">
                 <c:if test="${content.orderid!=1}">
@@ -121,7 +122,6 @@
                         <i class="fas fa-paint-brush"></i>edit content</a>
                         <a class="btn btn--stroke2"
                            href="javascript:deletecontent(${content.articleid},${content.contentid})">
-<%--                           href="DeleteContent.do?articleid=${content.articleid}&contentid=${content.contentid}">--%>
                             <i class="fas fa-trash-alt"></i>delete content</a></p>
                 </c:if>
                 <p class="lead">${content.textcontent} </p>

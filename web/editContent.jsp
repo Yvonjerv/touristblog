@@ -69,7 +69,7 @@
     <div class="row narrow section-intro">
         <div class="col-full">
             <h3>Edit Content</h3>
-            <h1>Editing Article No${articleid} </h1>
+            <h1>Editing Article No ${articleid} </h1>
 
         </div>
     </div>
@@ -81,19 +81,19 @@
 
                     <div class="form-field" style="display: none;">
                         <input name="articleid" type="number" readonly="readonly" id="userid" placeholder="articleid"
-                               value="${articleid}" minlength="2"
+                               value="${articleid}"
                                required="" aria-required="true" class="full-width">
                     </div>
 
                     <div class="form-field">
                         <input name="contentid" type="number" readonly="readonly" placeholder="contentid"
-                               value="${content.contentid}" minlength="2"
+                               value="${content.contentid}"
                                required="" aria-required="true" class="full-width">
                     </div>
 
                     <div class="form-field">
                         <input name="orderid" type="number" placeholder="orderid" value="${content.orderid}"
-                               minlength="2"
+
                                required="" aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">
@@ -135,7 +135,7 @@
                     <input id="photourl" class="editbox2" style="width: 100%; color: #c5bec1;" type="text"
                            name="photourl" value="${content.photourl}"
                            readonly="readonly">
-                    <input class="btn btn--stroke" type="button" value="Choice Picture" id="choicePhoto"
+                    <input class="btn btn--stroke" type="button" value="Choose Picture" id="choicePhoto"
                            style="width: 90%; color: #c5bec1; ">
                     <!-- Hide file tag -->
                     <input id="fileToUpload" style="display:none" type="file" name="upfile"/>

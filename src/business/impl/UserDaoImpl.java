@@ -31,16 +31,16 @@ public class UserDaoImpl implements UserDAO {
         return row <= 0;
     }
 
-
     @Override
-    public int registerUser(TUser user) {
+    public boolean registerUser(TUser user) {
         String sql = "insert into t_user (userid, username,pwd ,mobile,mail ) " +
                 " values(?,?,?,?,?)";
 
         Object[] para = {user.getUserid(), user.getUsername(), user.getPwd(), user.getMobile(), user.getMail()};
         int row = dao.insert(sql, para);
-        if (row > 0) return row;
-        else return -1;
+        System.out.println(row);
+        if (row > -1) return true;
+        else return false;
     }
 
     @Override
@@ -61,7 +61,4 @@ public class UserDaoImpl implements UserDAO {
         dao.close();
         return user;
     }
-
-
-
 }

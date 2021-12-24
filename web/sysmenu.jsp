@@ -13,8 +13,8 @@
 
     <!-- script
     ================================================== -->
-<%--    <script src="js2/modernizr.js"></script>--%>
-<%--    <script src="js2/pace.min.js"></script>--%>
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -52,11 +52,6 @@
                 <li><input
                         style="background: rgba(114,114,114,0.3); color: white; border-radius: 50px; padding: 0 5px; height: 40px;"
                         type="text" placeholder="search" name="searchin"></li>
-<%--                <li><input type="submit"></li>--%>
-                <%--            <li><a href="editUser.jsp" title="about">Register</a></li>--%>
-                <%--            <li><a href="myArticles.jsp" title="works">My articles</a></li>--%>
-                <%--            <li><a href="login.jsp" title="blog">Login</a></li>--%>
-                <%--            <li><a href="logout.do" title="contact">LOGOUT</a></li>--%>
             </form>
         </ul>
     </nav>

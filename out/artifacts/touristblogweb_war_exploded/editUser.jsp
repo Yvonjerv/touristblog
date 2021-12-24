@@ -35,11 +35,12 @@
             <form name="contactForm" id="contactForm" method="post" action="SaveUser.do">
                 <fieldset>
                     <c:if test="${loginuser ==null}">
-                    <div class="form-field">
-                        <input name="userid" type="text" id="userid" placeholder="userid" value="${loginuser.userid}"
-                               minlength="2"
-                               required="" aria-required="true" class="full-width">
-                    </div>
+                        <div class="form-field">
+                            <input name="userid" type="text" id="userid" placeholder="userid"
+                                   value="${loginuser.userid}"
+                                   minlength="2"
+                                   required="" aria-required="true" class="full-width">
+                        </div>
                     </c:if>
                     <div class="form-field">
                         <input name="username" type="text" placeholder="fullname" value="${loginuser.username}"
@@ -51,7 +52,8 @@
                                aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">
-                        <input name="pwd" type="password" placeholder="password" value="${loginuser.pwd}" required=""
+                        <input name="pwd2" type="password" placeholder="confirm password" value="${loginuser.pwd}"
+                               required=""
                                aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">

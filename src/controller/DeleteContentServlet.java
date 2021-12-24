@@ -2,7 +2,7 @@ package controller;
 
 import business.dao.ContentDAO;
 import business.impl.ContentDaoImpl;
-import model.TContent;
+
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -18,14 +18,14 @@ public class DeleteContentServlet extends HttpServlet {
         String articleid = request.getParameter("articleid");
 
         ContentDAO cdao = new ContentDaoImpl();
-        //TContent tContent = cdao.getContentById(Integer.parseInt(contentid));
-        if(cdao.deleteContent(Integer.parseInt(contentid))){
-            response.setContentType("text/html");
-            PrintWriter pw=response.getWriter();
-            pw.println("<script type=\"text/javascript\">");
-            pw.println("alert('DELETED');");
-            pw.println("</script>");
-            RequestDispatcher rd=request.getRequestDispatcher("articleDetail.jsp?articleid=" + articleid);
+
+        if (cdao.deleteContent(Integer.parseInt(contentid))) {
+//            response.setContentType("text/html");
+//            PrintWriter pw = response.getWriter();
+//            pw.println("<script type=\"text/javascript\">");
+//            pw.println("alert('DELETED');");
+//            pw.println("</script>");
+            RequestDispatcher rd = request.getRequestDispatcher("articleDetail.jsp?articleid=" + articleid);
             rd.include(request, response);
             return;
 
@@ -34,6 +34,6 @@ public class DeleteContentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-doGet(request, response);
+        doGet(request, response);
     }
 }

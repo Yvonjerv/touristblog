@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class TContent {
     private int contentid;
-    private int  articleid;
+    private int articleid;
     private String textcontent;
     private String photourl;
     private int orderid;

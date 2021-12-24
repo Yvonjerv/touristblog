@@ -1,4 +1,4 @@
-package test;
+package junit.test;
 
 import db.DBConnection;
 import org.junit.Before;

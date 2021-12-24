@@ -5,38 +5,31 @@
 <head>
     <meta charset="utf-8">
     <title>title</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
     <style>
-        .errorcontent{
-            margin-left: 100px;
-            width:1000px;
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: auto;
         }
-        a{
-            text-decoration: none;
-            /*font: "宋体";*/
-            font-size: 16px;
-            color:#EE7621;
-        }
-
     </style>
 </head>
 <body>
-<table class="errorcontent">
-    <tr>
-        <td rowspan="2" style="width:350px">
-            <img src="../content_img/error.jpg">
-        </td>
-        <td><center>
-            <p><h2>${errMsg}</h2></p>
-        </center>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <center>
-                <a href="${backUrl}">Back to web page</a>
-            </center>
-        </td>
-    </tr>
-</table>
+<section style="background: #ffffff;">
+    <div style="margin-top: 70px">
+        <img style="height: 400px;width: 400px; object-fit: contain; " src="../content_img/error.png">
+    </div>
+    <div>
+        <h2 style="color: #b00225; font-weight: bolder; font-size: 30px ">${errMgs}</h2>
+    </div>
+
+</section>
+<section style="background: #b00225">
+    <a style="margin: 20px" class="btn btn--stroke page-header__btn" href="${backUrl}">Back to web page</a>
+</section>
 </body>
 </html>

@@ -40,7 +40,7 @@ public class LoginFilter extends HttpServlet implements Filter {
 
             if (parasName.equals("articleid")) {
                 String articleid = request.getParameter("articleid");
-                if (articleid != null &&  !articleid.equals("")) {
+                if (articleid != null && !articleid.equals("")) {
                     ArticleDAO hdao = new ArticleDaoImpl();
                     article = hdao.getArticleById(Integer.parseInt(articleid));
                 }
@@ -54,11 +54,11 @@ public class LoginFilter extends HttpServlet implements Filter {
         //Select the URL file extension to block
         if (extendsName.equals(".jsp") || extendsName.equals(".do")) {
 
-            if (url.endsWith("myArticles.jsp")) {
+            if (url.endsWith("myArticles.jsp") || url.endsWith("myArticles2.jsp")) {
                 //Permission check
                 if (loginuser == null) {
-                    RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
-                    request.setAttribute("promptMsg", "You don't have permission");
+                    RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
+                    request.setAttribute("errMgs", "You don't have permission");
                     request.setAttribute("backUrl", "login.jsp");
                     rd.forward(request, response);
                     return;
@@ -67,9 +67,8 @@ public class LoginFilter extends HttpServlet implements Filter {
             } else if (url.endsWith("editArticle.jsp") || url.endsWith("editContent.jsp")) {
                 //Permission check
                 if (loginuser == null) {
-                    RequestDispatcher rd =
-                            request.getRequestDispatcher("prompt.jsp");
-                    request.setAttribute("promptMsg", "You don't have permission");
+                    RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
+                    request.setAttribute("errMgs", "You don't have permission");
 
                     request.setAttribute("backUrl", "login.jsp");
                     rd.forward(request, response);
@@ -79,8 +78,8 @@ public class LoginFilter extends HttpServlet implements Filter {
                         //it represent this page will add new article
                     } else {
                         if (!article.getUserid().equals(loginuser.getUserid())) {
-                            RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
-                            request.setAttribute("promptMsg", "You don't have permission");
+                            RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
+                            request.setAttribute("errMgs", "You don't have permission");
                             request.setAttribute("backUrl", "index.jsp");
                             rd.forward(request, response);
                             return;

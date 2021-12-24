@@ -44,6 +44,8 @@
     ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></script>
 
 </head>
 
@@ -74,7 +76,7 @@
 
             <h1 class="page-header__title">
                 <a href="#0" title="">
-                   ${loginuser.username} - ${loginuser.userid}
+                    ${loginuser.username} - ${loginuser.userid}
                 </a>
             </h1>
             <p>${loginuser.mail}<br>
@@ -94,28 +96,30 @@
     <div class="row blog-content">
         <div class="col-full">
             <c:if test="${loginuser != null}">
-                <a href="editArticle.jsp" class="btn full-width" style="">new article</a>
+                <a href="editArticle.jsp" class="btn full-width" style=""><i class="fas fa-plus"></i> new article</a>
             </c:if>
+            <div>
+                <a href="myArticles2.jsp"><i class="fas fa-list"></i>list</a>
+            </div>
             <div class="blog-list block-1-2 block-tab-full">
+
                 <c:forEach items="${articleList}" var="article">
                     <article class="col-block">
 
                         <div class="blog-date">
-                            <a href="articleDetail.jsp?articleid=${article.articleid}">${article.publishtime}</a>
+                            <a href="editArticle.jsp?articleid=${article.articleid}">${article.publishtime}</a>
                         </div>
 
-                        <h2 class="h01"><a href="articleDetail.jsp?articleid=${article.articleid}">${article.title}</a></h2>
-<%--                        <p>--%>
-<%--                                ${article.firstContent.textcontent} </p>--%>
+                        <h2 class="h01"><a href="editArticle.jsp?articleid=${article.articleid}">${article.title}</a>
+                        </h2>
                         <div class="blog-cat">
-                            <a href="articleDetail.jsp?articleid=${article.articleid}">${article.address}</a>
+                            <a href="editArticle.jsp?articleid=${article.articleid}">${article.address}</a>
                         </div>
-                        <a href="editArticle.jsp?articleid=${article.articleid}" class="btn full-width">Edit Article</a>
+                        <a href="articleDetail.jsp?articleid=${article.articleid}" class="btn full-width"><i
+                                class="fas fa-paint-brush"></i>Edit Contents</a>
                         <a class="btn btn--stroke"
-                           href="javascript:deletearticle(${article.articleid})"
-<%--                           href="DeleteArticle.do?articleid=${article.articleid}"--%>
-                        >
-                            <i class="fa-solid fa-trash-can"></i>delete article</a>
+                           href="javascript:deletearticle(${article.articleid})">
+                            <i class="fas fa-trash-alt"></i>delete article</a>
                     </article>
                 </c:forEach>
 

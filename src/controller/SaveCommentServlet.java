@@ -61,15 +61,14 @@ public class SaveCommentServlet extends HttpServlet {
 
         if (hdao.addComment(commt) > 0) {
             response.setContentType("text/html");
-            PrintWriter pw=response.getWriter();
+            PrintWriter pw = response.getWriter();
             pw.println("<script type=\"text/javascript\">");
-            pw.println("alert('Successsfull');");
+            pw.println("alert('Successsful');");
             pw.println("</script>");
-            RequestDispatcher rd=request.getRequestDispatcher("articleDetail.jsp?articleid=" + articleid);
+            RequestDispatcher rd = request.getRequestDispatcher("articleDetail.jsp?articleid=" + articleid);
             rd.include(request, response);
             return;
         } else {
-
             RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
             request.setAttribute("errMsg", "Failed");
             request.setAttribute("backUrl", backUrl);

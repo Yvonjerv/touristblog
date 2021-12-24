@@ -4,6 +4,7 @@ import basic.BaseDAO;
 import basic.BaseDaoImpl;
 import business.dao.CommentDAO;
 import model.TComment;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +25,15 @@ public class CommentDaoImpl implements CommentDAO {
     }
 
     @Override
-    public TComment getCommentById(int  commentid) {
+    public TComment getCommentById(int commentid) {
         String sql = "select * from t_comment where  commentid=?  ";
         Object[] para = {commentid};
         ResultSet rs = dao.select(sql, para);
-        TComment  tcomment = new TComment(rs);
+        TComment tcomment = new TComment(rs);
         dao.close();
-        return  tcomment;
+        return tcomment;
     }
+
 
     @Override
     public boolean deleteCommentsByArticleid(int articleid) {
@@ -41,27 +43,28 @@ public class CommentDaoImpl implements CommentDAO {
         return dao.delete(sql, para);
     }
 
+
     @Override
     public List<TComment> getAllComments(int articleid, String userid) {
         String sql = "";
         ResultSet rs = null;
 
-        if (articleid == 0 &&  userid == null) {
+        if (articleid == 0 && userid == null) {
             sql = "select * from t_comment order by createtime desc";
             rs = dao.select(sql, null);
 
-        } else if (articleid != 0 &&  userid == null) {
+        } else if (articleid != 0 && userid == null) {
             sql = "select * from t_Comment where  articleid =? order by  createtime desc";
             Object[] para = {articleid};
             rs = dao.select(sql, para);
 
-        } else if (articleid == 0 &&  userid != null) {
+        } else if (articleid == 0 && userid != null) {
             sql = "select * from t_comment where  userid =? order by  createtime desc";
-            Object[] para = {  userid};
+            Object[] para = {userid};
             rs = dao.select(sql, para);
         } else {
             sql = "select * from t_comment where  articleid ? and  userid =? order by  createtime desc";
-            Object[] para = {articleid,  userid};
+            Object[] para = {articleid, userid};
             rs = dao.select(sql, para);
         }
         ArrayList<TComment> list = TComment.toList(rs);

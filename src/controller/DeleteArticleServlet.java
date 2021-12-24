@@ -34,11 +34,11 @@ public class DeleteArticleServlet extends HttpServlet {
         System.out.println("comments deleted");
 
         if (adao.deleteArticle(Integer.parseInt(articleid))) {
-            response.setContentType("text/html");
-            PrintWriter pw = response.getWriter();
-            pw.println("<script type=\"text/javascript\">");
-            pw.println("alert('DELETED');");
-            pw.println("</script>");
+//            response.setContentType("text/html");
+//            PrintWriter pw = response.getWriter();
+//            pw.println("<script type=\"text/javascript\">");
+//            pw.println("alert('DELETED');");
+//            pw.println("</script>");
             RequestDispatcher rd = request.getRequestDispatcher("myArticles.jsp");
             rd.include(request, response);
             return;

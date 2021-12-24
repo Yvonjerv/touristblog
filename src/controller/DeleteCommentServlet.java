@@ -22,11 +22,11 @@ public class DeleteCommentServlet extends HttpServlet {
         CommentDAO cdao = new CommentDaoImpl();
         //TComment tComment = cdao.getCommentById(Integer.parseInt(commentid));
         if(cdao.deleteComment(Integer.parseInt(commentid))){
-            response.setContentType("text/html");
-            PrintWriter pw=response.getWriter();
-            pw.println("<script type=\"text/javascript\">");
-            pw.println("alert('DELETED');");
-            pw.println("</script>");
+//            response.setContentType("text/html");
+//            PrintWriter pw=response.getWriter();
+//            pw.println("<script type=\"text/javascript\">");
+//            pw.println("alert('DELETED');");
+//            pw.println("</script>");
             RequestDispatcher rd=request.getRequestDispatcher("articleDetail.jsp?articleid=" + articleid);
             rd.include(request, response);
             return;

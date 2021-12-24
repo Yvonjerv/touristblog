@@ -57,7 +57,7 @@ public class SaveArticleServlet extends HttpServlet {
             if (hdao.addArticle(article) > 0) {
                 RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
                 request.setAttribute("promptMsg", "Sucessfully added");
-                request.setAttribute("backUrl", "myArticles.jsp" );
+                request.setAttribute("backUrl", "myArticles.jsp");
                 rd.forward(request, response);
                 return;
             } else {
@@ -78,7 +78,7 @@ public class SaveArticleServlet extends HttpServlet {
             if (hdao.modifyArticle(article)) {
                 RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
                 request.setAttribute("promptMsg", "Sucessfully updated");
-                request.setAttribute("backUrl", "articleDetail.jsp?articleid="+articleid);
+                request.setAttribute("backUrl", "myArticles.jsp");
                 rd.forward(request, response);
                 return;
             } else {

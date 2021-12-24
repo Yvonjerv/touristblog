@@ -12,13 +12,13 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    HttpSession session = request.getSession();
-    session.removeAttribute("loginuser");
-    response.sendRedirect("login.jsp");
+        HttpSession session = request.getSession();
+        session.removeAttribute("loginuser");
+        response.sendRedirect("login.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-doGet(request, response);
+        doGet(request, response);
     }
 }

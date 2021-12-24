@@ -98,31 +98,33 @@
             <c:if test="${loginuser != null}">
                 <a href="editArticle.jsp" class="btn full-width" style=""><i class="fas fa-plus"></i> new article</a>
             </c:if>
-            <div>
-                <a href="myArticles2.jsp"><i class="fas fa-list"></i>list</a>
-            </div>
             <div class="blog-list block-1-2 block-tab-full">
+                <a href="myArticles.jsp"><i class="fas fa-list"></i>list</a>
+                <table BORDER="0">
+                    <c:forEach items="${articleList}" var="article">
+                        <tr>
+                            <td style="padding-left: 0px;padding-right: 0px;">
+                                <h3 style=" padding: 0; margin: 0;"><a
+                                        href="editArticle.jsp?articleid=${article.articleid}">${article.title}</a>
+                                </h3>
+                            </td>
+                            <td>
+                                <h5 STYLE="padding: 0; margin: 0;color: #d7d5d5;"><a
+                                        href="editArticle.jsp?articleid=${article.articleid}">${article.address}</a>
+                                </h5>
+                            </td>
+                            <td style="float: right; padding-right: 0;">
+                                <a style="width: 100px;" href="articleDetail.jsp?articleid=${article.articleid}"
+                                   class="btn btn--stroke">Edit</a>
+                                <a style="width: 100px; padding: 0;" class="btn btn--stroke"
+                                   href="javascript:deletearticle(${article.articleid})">
+                                    delete </a>
+                            </td>
+                        </tr>
 
-                <c:forEach items="${articleList}" var="article">
-                    <article class="col-block">
+                    </c:forEach>
 
-                        <div class="blog-date">
-                            <a href="editArticle.jsp?articleid=${article.articleid}">${article.publishtime}</a>
-                        </div>
-
-                        <h2 class="h01"><a href="editArticle.jsp?articleid=${article.articleid}">${article.title}</a>
-                        </h2>
-                        <div class="blog-cat">
-                            <a href="editArticle.jsp?articleid=${article.articleid}">${article.address}</a>
-                        </div>
-                        <a href="articleDetail.jsp?articleid=${article.articleid}" class="btn full-width"><i
-                                class="fas fa-paint-brush"></i>Edit Contents</a>
-                        <a class="btn btn--stroke"
-                           href="javascript:deletearticle(${article.articleid})">
-                            <i class="fas fa-trash-alt"></i>delete article</a>
-                    </article>
-                </c:forEach>
-
+                </table>
             </div> <!-- end blog-list -->
 
         </div> <!-- end col-full -->

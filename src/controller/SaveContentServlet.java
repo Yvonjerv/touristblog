@@ -40,7 +40,7 @@ public class SaveContentServlet extends HttpServlet {
         //check parameter
         String errMgs = "";
         String backUrl = "editArticle.jsp";
-        if (textcontent == null  ) {
+        if (textcontent == null) {
             errMgs = "textcontent cannot be empty";
         }
 
@@ -70,13 +70,13 @@ public class SaveContentServlet extends HttpServlet {
                 return;
             } else {
                 RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
-                request.setAttribute("errMsg", "Failed");
-                request.setAttribute("backUrl", backUrl);
+                request.setAttribute("errMgs", "Failed");
+                request.setAttribute("backUrl", "index.jsp");
                 rd.forward(request, response);
                 return;
             }
 
-        } else { //update hotel info to database
+        } else { //update Content info to database
 
             TContent content = hdao.getContentById(Integer.parseInt(contentid));
 
@@ -87,7 +87,7 @@ public class SaveContentServlet extends HttpServlet {
             if (hdao.modifyContent(content)) {
                 RequestDispatcher rd = request.getRequestDispatcher("prompt.jsp");
                 request.setAttribute("promptMsg", "Sucessfully updated");
-                request.setAttribute("backUrl", "index.jsp");
+                request.setAttribute("backUrl", "articleDetail.jsp?articleid=" + articleid);
                 rd.forward(request, response);
                 return;
             } else {

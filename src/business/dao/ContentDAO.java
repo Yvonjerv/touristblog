@@ -1,6 +1,7 @@
-package business.dao; 
+package business.dao;
 
 import model.TContent;
+
 import java.util.List;
 
 public interface ContentDAO {
@@ -10,48 +11,45 @@ public interface ContentDAO {
      * @param content TContent object containing content registration information
      * @return boolean, True is returned for successful and false for failed
      */
-    int addContent(TContent content);
+    public int addContent(TContent content);
 
     /**
-     *
      * @param articleid
-     * @return
+     * @return boolean, Return true for success and false for failure
      */
-    public boolean deleteContentsByArticleid(int  articleid);
+    public boolean deleteContentsByArticleid(int articleid);
+
     /**
      * Modify content information
      *
      * @param content TContent object containing content modification information
      * @return boolean, Return true for success and false for failure
      */
-    boolean modifyContent(TContent content);
+    public boolean modifyContent(TContent content);
 
     /**
-     *
      * @param contentid
-     * @return
+     * @return content
      */
-    TContent getContentById(int contentid);
+    public TContent getContentById(int contentid);
 
     /**
-     *
      * @param contentid
-     * @return
+     * @return boolean, Return true for success and false for failure
      */
-    boolean deleteContent(int contentid);
+    public boolean deleteContent(int contentid);
 
     /**
-     *
      * @param textcontent
      * @param order
-     * @return
+     * @return list
      */
-    List<TContent> getAllContents(int articleid, String textcontent, int order);
+    public List<TContent> getAllContents(int articleid, String textcontent, int order);
 
     /**
      * Returns a list of objects for all hotel information
      *
      * @return List<TContent>
      */
-    List<TContent> getContentListByCondition(String position, String textcontent);
+    public List<TContent> getContentListByCondition(String position, String textcontent);
 }

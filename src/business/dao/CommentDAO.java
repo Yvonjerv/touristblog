@@ -6,42 +6,36 @@ import java.util.List;
 
 public interface CommentDAO {
     /**
-     *
      * @param tComment
-     * @return
+     * @return id
      */
-    int addComment(TComment tComment);
+    public int addComment(TComment tComment);
+
 
     /**
-     * Modify comment information
-     *
-     * @param tcomment Tcomment object containing comment modification information
+     * @param commentid
+     * @return comment
+     */
+    public TComment getCommentById(int commentid);
+
+    /**
+     * @param articleid
      * @return boolean, Return true for success and false for failure
      */
-//    public boolean modifyComment(TComment tComment);
+    public boolean deleteCommentsByArticleid(int articleid);
 
     /**
-     *
      * @param commentid
-     * @return
+     * @return boolean, Return true for success and false for failure
      */
-    public TComment getCommentById(int  commentid);
-
-    public boolean deleteCommentsByArticleid(int  articleid);
-    /**
-     *
-     * @param commentid
-     * @return
-     */
-    boolean deleteComment(int commentid);
+    public boolean deleteComment(int commentid);
 
     /**
-     * 
      * @param articleid
      * @param userid
-     * @return
+     * @return list
      */
-    List<TComment> getAllComments(int articleid, String userid);
+    public List<TComment> getAllComments(int articleid, String userid);
 
-   
+
 }

@@ -6,13 +6,17 @@
     ArticleDAO adao = new ArticleDaoImpl();
     List<TArticle> list;
 
+//out.println("kkkk");
     if (searchIn != null && !searchIn.equals("")) {
         list = adao.getArticleListByCondition(searchIn, searchIn);
-       // out.println(list.size());
+        //   out.println(list.size());
     } else {
         list = adao.getArticleListByCondition(null, null);
+        TArticle artiTop = adao.getArticleWithHighestComment();
+        request.setAttribute("articleTop", artiTop);
     }
-request.setAttribute("searchIn", searchIn);
+    //out.println(artiTop.getTitle());
+    request.setAttribute("searchIn", searchIn);
     request.setAttribute("searchCount", list.size());
     request.setAttribute("articleList", list);
 %>
@@ -66,34 +70,35 @@ request.setAttribute("searchIn", searchIn);
 ================================================== -->
 <c:if test="${searchIn ==null || searchIn.equals('')}">
 
-<section class="page-header page-hero" style="background-image:url(../content_img/blog-bg-01.jpg)">
+<section class="page-header page-hero" style="background-image:url(../content_img/${articleTop.firstContent.photourl})">
 
     <div class="row page-header__content">
         <article class="col-full">
 
             <div class="page-header__info">
                 <div class="page-header__cat">
-                    <a href="#0">Branding</a><a href="#0">Design</a>
+                    <a href="#0">MOST COMMENTED ARTICLE</a><a href="#0"> </a>
                 </div>
                 <div class="page-header__date">
-                    Sept 16, 2017
+                        ${articleTop.publishtime}
                 </div>
             </div>
 
             <h1 class="page-header__title">
-                <a href="#0" title="">
-                    The 10 Golden Rules of Clean Simple Design.
+                <a href="articleDetail.jsp?articleid=${articleTop.articleid}" title="">
+                        ${articleTop.title}
                 </a>
             </h1>
-            <p>Pellentesque in ipsum id orci porta dapibus amet dui. Ad id deserunt ratione autem eius et minima ut
-                et. Nihil sed quis velit aut enim aliquam. Quas non ad sint eveniet voluptatem est iure...</p>
+            <p>${articleTop.firstContent.textcontent}</p>
             <p>
-                <a href="#0" class="btn btn--stroke page-header__btn">Read More</a>
+                <a href="articleDetail.jsp?articleid=${articleTop.articleid}" class="btn btn--stroke page-header__btn">Read
+                    More</a>
             </p>
         </article>
     </div>
 
-</section> <!-- end page-header -->
+</section>
+<!-- end page-header -->
 </c:if>
 <!-- blog
 ================================================== -->
@@ -102,7 +107,7 @@ request.setAttribute("searchIn", searchIn);
     <div class="row blog-content">
         <div class="col-full">
             <c:if test="${searchIn !=null && !searchIn.equals('')}">
-            <h2 class="h01">We found ${searchCount} articles containing '${searchIn}'</h2>
+                <h2 class="h01">We found ${searchCount} articles containing '${searchIn}'</h2>
             </c:if>
             <div class="blog-list block-1-2 block-tab-full">
                 <c:forEach items="${articleList}" var="article">
@@ -115,7 +120,8 @@ request.setAttribute("searchIn", searchIn);
                         <h2 class="h01"><a href="articleDetail.jsp?articleid=${article.articleid}">${article.title}</a>
                         </h2>
                         <div><a href="articleDetail.jsp?articleid=${article.articleid}">
-                            <img style="width: 100%; overflow: hidden; object-fit: contain; margin-bottom:20px; " src="../content_img/${article.firstContent.photourl}">
+                            <img style="width: 100%; overflow: hidden; object-fit: contain; margin-bottom:20px; "
+                                 src="../content_img/${article.firstContent.photourl}">
                         </a></div>
                         <p>
                                 ${article.firstContent.textcontent} </p>
@@ -140,10 +146,10 @@ request.setAttribute("searchIn", searchIn);
 ================================================== -->
 <%@ include file="sysfooter.jsp" %>
 <!-- Java Script
-================================================== -->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+<%--================================================== -->--%>
+<%--<script src="js/jquery-3.2.1.min.js"></script>--%>
+<%--<script src="js/plugins.js"></script>--%>
+<%--<script src="js/main.js"></script>--%>
 
 </body>
 

@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         if (msg != null) {
-            request.setAttribute("errMsg", msg);
+            request.setAttribute("errMgs", msg);
             request.setAttribute("backUrl", "login.jsp");
             RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
             rd.forward(request, response);
@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
         TUser loginuser = userDAO.login(userid, pwd);
 
         if (loginuser == null || loginuser.getUserid() == null) {
-            request.setAttribute("errMsg", "Your user error");
+            request.setAttribute("errMgs", "Your user error");
             request.setAttribute("backUrl", "login.jsp");
             RequestDispatcher rd = request.getRequestDispatcher("errors.jsp");
             rd.forward(request, response);

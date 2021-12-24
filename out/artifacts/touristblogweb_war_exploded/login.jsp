@@ -4,9 +4,9 @@
 <html>
 <head>
     <!--begin to css of page-->
-    <title>Log in</title>
-    <meta charset="utf-8">
-    <title></title>
+    <%--    <title>Log in</title>--%>
+    <%--    <meta charset="utf-8">--%>
+    <%--    <title></title>--%>
 </head>
 <body>
 <%--    SYS MENU --%>

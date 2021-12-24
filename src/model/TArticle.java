@@ -14,14 +14,17 @@ public class TArticle {
     private String address;
     private String publishtime;
     private String userid;
-private TContent firstContent;
+    private TContent firstContent;
+
     public TArticle() {
     }
+
     public TContent getFirstContent() {
-        ArticleDAO dao= new ArticleDaoImpl();
+        ArticleDAO dao = new ArticleDaoImpl();
         firstContent = dao.getFirstContent(this.articleid);
         return firstContent;
     }
+
     public int getArticleid() {
         return articleid;
     }
